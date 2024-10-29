@@ -1,40 +1,50 @@
 package transporte;
 
+
 public class Motocicleta extends Transporte {
-  private String subType;
+  private String subType;//scooters, enduro, trails, cruiser
   private double costoHoras, rentaTotal;
   private int horas;
 
   public Motocicleta() {
     super("Motocicleta", "", "", 0);
   }
-  public String getSubType() {
-    return subType;
+  public void setSubType(int subType) {
+    String[] subtipoMotos={"Scooter","Enduro","Trails","Cruiser"};
+    this.subType=subtipoMotos[subType];
+    setCostoHoras(subType);
+  }
+  public void setHoras(int horas) {
+    this.horas = horas;
+  }
+  public void setCostoHoras(int costo) {
+    int[] precios={70,75,80,85};
+    this.costoHoras = precios[costo];
+  }
+  public void setRentaTotal(double rentaTotal) {
+    this.rentaTotal = rentaTotal;
   }
 
-  public void setSubType(String subType) {
-    this.subType = subType;
-  }
   public double getCostoHoras() {
     return costoHoras;
   }
-
-  public void setCostoHoras(double costoHoras) {
-    this.costoHoras = costoHoras;
+  public String getSubType() {
+    return subType;
   }
   public double getRentaTotal() {
     return rentaTotal;
-  }
-
-  public void setRentaTotal(double rentaTotal) {
-    this.rentaTotal = rentaTotal;
   }
   public int getHoras() {
     return horas;
   }
 
-  public void setHoras(int horas) {
-    this.horas = horas;
+  @Override
+  public String gps(){
+    return "0°00'10.0N 0°10'10.0E";
+  }
+  @Override
+  public double calculoPago(){
+    return costoHoras*horas;
   }
 }
 

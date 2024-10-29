@@ -1,6 +1,6 @@
 package transporte;
 
-public class Transporte{
+public class Transporte implements IVehiculo{
   protected String type,brand,plate;
   protected int year;
 
@@ -34,7 +34,11 @@ public class Transporte{
     this.plate=plate;
     this.year=year;
   }
-
+  @Override
   public double calculoPago(){return 0;}
+  @Override
   public String gps(){return "0°00'00.0N 0°00'00.0E";}
+  public String getDetalles(){
+    return this.type+"\nMarca:"+this.brand;
+  }
 }
