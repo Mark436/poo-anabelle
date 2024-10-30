@@ -2,7 +2,7 @@ package transporte;
 
 public class Auto extends Transporte {
   private String subType;//sedán, compactos, SUV, deportivo
-  private String transmision;//automatico, manual
+  private String transmision="Automático";//automatico, manual
   private double costoDia,rentaTotal;
   private int dias;
   public Auto(){
@@ -18,19 +18,22 @@ public class Auto extends Transporte {
     this.costoDia=precios[costo];
   }
   public void setTransmision(int tipo){
-    this.transmision="Automatico";
-    if(tipo==2)this.transmision="Manual";
+    if(tipo==2)this.transmision="Manual";//default automatica
   }
   public void setDias(int dias){
     this.dias=dias;
   }
   @Override
   public double calculoPago(){
-    this.rentaTotal=this.costoDia*dias;
+    this.rentaTotal=this.costoDia*this.dias;
     return this.rentaTotal;
   }
   @Override
   public String gps(){
     return "29°05'28.6 N 110°56'26.1 W";
+  }
+  @Override
+  public String getDetalles(){
+    return super.getDetalles()+"\nTransmisión: "+this.transmision+"\nSub tipo: "+this.subType+"\nCosto x Día: "+this.costoDia+"\nDías: "+this.dias+"\nPrecio Total: "+this.rentaTotal;
   }
 }

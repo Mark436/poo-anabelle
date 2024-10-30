@@ -44,7 +44,12 @@ public class Motocicleta extends Transporte {
   }
   @Override
   public double calculoPago(){
-    return costoHoras*horas;
+    this.rentaTotal=costoHoras*horas;
+    return this.rentaTotal;
+  }
+  @Override
+  public String getDetalles(){
+    return super.getDetalles()+"\nSub tipo: "+this.subType+"\nCosto x Hora: "+this.costoHoras+"\nHoras: "+this.horas+"\nPrecio Total: "+this.rentaTotal;
   }
 }
 

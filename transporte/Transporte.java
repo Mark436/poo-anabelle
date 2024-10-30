@@ -39,6 +39,6 @@ public class Transporte implements IVehiculo{
   @Override
   public String gps(){return "0°00'00.0N 0°00'00.0E";}
   public String getDetalles(){
-    return this.type+"\nMarca:"+this.brand;
+    return this.type+"\nMarca:"+this.brand+"\nPlacas: "+this.plate+"\nAño: "+this.year;
   }
 }
