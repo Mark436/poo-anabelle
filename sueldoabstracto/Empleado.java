@@ -1,5 +1,5 @@
 package sueldoabstracto;
-public class Empleado implements IEmpleado{
+public abstract class Empleado{
   private String nombre;
   protected int horasT;
   protected double cuotaxHr,sueldo;
@@ -29,12 +29,9 @@ public class Empleado implements IEmpleado{
   public double getSueldo(){
     return this.sueldo;
   }
-  public void calcularSueldo(){}
   public String getDetalles(){
     return "\nNombre: "+this.nombre+"\nTipo: "+this.tipo+"\nPuesto: "+this.puesto+"RFC: "+this.rfc;
   }
-  @Override
-  public double calcularAfore(){
-    return 0;
-  }
+  public abstract double calcularAfore();
+  public abstract void calcularSueldo();
 }

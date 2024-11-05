@@ -13,12 +13,13 @@ public class Asalariado extends Empleado{
   private double getSueldoQuincenal(){
     return this.sueldoQuincenal;
   }
-  public double calcAfore(){
+  @Override
+  public double calcularAfore(){
     return 1000.0;
   }
   @Override
   public double getSueldo(){
-    return this.getSueldoQuincenal()+calcAfore();
+    return this.getSueldoQuincenal()+calcularAfore();
   }
   @Override
   public void calcularSueldo(){
