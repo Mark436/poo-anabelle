@@ -4,6 +4,14 @@ public abstract class Animal{
   protected String especie,nombre;
   protected double pesoKg;
   protected int numeroJaula;
+  public Animal(){}
+  public Animal(String especie,String nombre,int numeroJaula,double peso){
+    this.especie=especie;
+    this.nombre=nombre;
+    this.numeroJaula=numeroJaula;
+    this.pesoKg=peso;
+  }
+
   public void setEspecie(String newval){
     this.especie=newval;
   }
@@ -27,6 +35,9 @@ public abstract class Animal{
   }
   public int getNumeroJaula(){
     return this.numeroJaula;
+  }
+  public String getDetalles(){
+    return "Clase:"+this.definirClaseDeAnimalEres()+"\nEspecie:"+this.especie+"\nNombre:"+this.nombre+"\nNumero de Jaula:"+this.numeroJaula+"\nPeso en kg:"+this.pesoKg;
   }
   public abstract String definirClaseDeAnimalEres();
 

@@ -15,6 +15,14 @@ public class Ave extends Animal{
   public double getAlturaMax(){
     return this.alturaMaxima;
   }
+  public Ave(){}
+  public Ave(String especie,String nombre,int numeroJaula,double peso){
+    super(especie,nombre,numeroJaula,peso);
+  }
+  @Override
+  public String getDetalles(){
+    return super.getDetalles()+"\nColor de Plumaje:"+this.colorPlumaje+"\nAltura maxima de vuelo:"+this.alturaMaxima;
+  }
   @Override
   public String definirClaseDeAnimalEres(){
     return "Ave";
