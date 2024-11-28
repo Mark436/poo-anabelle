@@ -1,6 +1,6 @@
 package torneojuegos;
+import atajos.Atajos;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegistroTorneo {
@@ -18,26 +18,6 @@ public class RegistroTorneo {
       System.out.printf("%s no debe incluir numeros ni superar los 12 caracteres\n",campo.equalsIgnoreCase("nombre")?"El nombre":"Los apellidos");      
     }
     return dato;
-  }
-  public static int entradaMenu(int min,int max,String msg){
-    int opt;
-    while(true){
-      try{
-        opt=input.nextInt();input.nextLine();
-      }catch(InputMismatchException e){
-        System.out.println("Solo se aceptan numeros");
-        input.nextLine();
-        System.out.println(msg);
-        continue;
-      }
-      if(opt<min||opt>max){
-        System.out.println("Ingrese una opcion valida");
-        System.out.println(msg);
-        continue;
-      }
-      break;
-    }
-    return opt;
   }
   public static void main(String[] args){
     ArrayList<Equipo> equipos=new ArrayList<>();
@@ -65,8 +45,7 @@ public class RegistroTorneo {
         }
         if(equipo.getEspaciosDisp()==0)break;
         String msg=String.format("Desea ingresar otro jugador? le quedan %s espacios\n1.-Si\n2.-No\n",equipo.getEspaciosDisp());
-        System.out.print(msg);
-        int opt=entradaMenu(1, 2, msg);
+        int opt=Atajos.entradaMenu(1, 2, msg);
         if(opt==2)break;
       }
       
@@ -74,8 +53,7 @@ public class RegistroTorneo {
       equipos.add(equipo);
       while(true){
         String msg="que desea hacer?\n1.-Ingresar otro equipo\n2.-salir\n3.-mostrar la informacion de los equipos\n";
-        System.out.println(msg);
-        opt=entradaMenu(1,3,msg);
+        opt=Atajos.entradaMenu(1,3,msg);
         if(opt!=1)for(Equipo equipoView : equipos)System.out.println(equipoView.getData()+"\n");
         if(opt==1)break;
         if(opt==2)break salir;

@@ -37,7 +37,7 @@ public class Equipo{
     this.espacios--;
   }
   public static boolean validarNombreAp(String validar,String campo){
-    return !(validar.length()>12&&campo.equalsIgnoreCase("nombre")||validar.matches("^0-9"));
+    return !((validar.length()>12&&campo.equalsIgnoreCase("nombre"))||validar.matches("[0-9]"));
   }
   public String getData(){
     return String.format("Equipo: %s\nCiudad:%s\nVideo Juego:%s\nJugadores:\n%s%s%s%s",this.nombre,this.ciudad,this.videojuego,"  "+jugadores[0].getNombreCompleto()+"\n",jugadores[1]==null?"":"  "+jugadores[1].getNombreCompleto()+"\n",jugadores[2]==null?"":"  "+jugadores[2].getNombreCompleto()+"\n",getEspaciosDisp()!=0?"Espacios disponibles:"+getEspaciosDisp():"");
