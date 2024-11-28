@@ -19,6 +19,26 @@ public class RegistroTorneo {
     }
     return dato;
   }
+  public static int entradaMenu(int min,int max,String msg){
+    int opt;
+    while(true){
+      try{
+        opt=input.nextInt();input.nextLine();
+      }catch(InputMismatchException e){
+        System.out.println("Solo se aceptan numeros");
+        input.nextLine();
+        System.out.println(msg);
+        continue;
+      }
+      if(opt<min||opt>max){
+        System.out.println("Ingrese una opcion valida");
+        System.out.println(msg);
+        continue;
+      }
+      break;
+    }
+    return opt;
+  }
   public static void main(String[] args){
     ArrayList<Equipo> equipos=new ArrayList<>();
     System.out.println("Torneo videojuegos");
@@ -44,37 +64,18 @@ public class RegistroTorneo {
           continue;
         }
         if(equipo.getEspaciosDisp()==0)break;
-        System.out.printf("Desea ingresar otro jugador? le quedan %s espacios\n1.-Si\n2.-No\n",equipo.getEspaciosDisp());
-        int opt;
-        try{
-          opt=input.nextInt();input.nextLine();
-        }catch(InputMismatchException e){
-          System.out.println("Solo se aceptan numeros");
-          input.nextLine();
-          continue;
-        }
-        if(opt!=1&&opt!=2){
-          System.out.println("Ingresa una opcion valida");
-          continue;
-        }
+        String msg=String.format("Desea ingresar otro jugador? le quedan %s espacios\n1.-Si\n2.-No\n",equipo.getEspaciosDisp());
+        System.out.print(msg);
+        int opt=entradaMenu(1, 2, msg);
         if(opt==2)break;
       }
       
       int opt;
       equipos.add(equipo);
       while(true){
-        System.out.println("que desea hacer?\n1.-Ingresar otro equipo\n2.-salir\n3.-mostrar la informacion de los equipos\n");
-        try{
-          opt=input.nextInt();input.nextLine();
-        }catch(InputMismatchException e){
-          System.out.println("Solo se aceptan numeros");
-          input.nextLine();
-          continue;
-        }
-        if(opt<1||opt>3){
-          System.out.println("Ingrese una opcion valida");
-          continue;
-        }
+        String msg="que desea hacer?\n1.-Ingresar otro equipo\n2.-salir\n3.-mostrar la informacion de los equipos\n";
+        System.out.println(msg);
+        opt=entradaMenu(1,3,msg);
         if(opt!=1)for(Equipo equipoView : equipos)System.out.println(equipoView.getData()+"\n");
         if(opt==1)break;
         if(opt==2)break salir;
